@@ -3,6 +3,11 @@ void main() {
   person.info();
   Character girl = Character.masha(64, 90);
   girl.info();
+
+  Train moscow = Train.toMoscow('Москва', '17:35', 23);
+  moscow.info();
+  Train am9 = Train.am9('Хасавюрт', 05);
+  am9.info();
 }
 class Character{
   String name = '';
@@ -28,9 +33,14 @@ class Character{
 }
 class Train{
   String destination = '';
-  int departureTime = 0;
+  String departureTime = '0';
   int trainNumber = 0;
+
+  Train(this.destination, this.departureTime, this.trainNumber);
+  Train.toMoscow(this.destination, this.departureTime, this.trainNumber);
+  Train.am9(this.destination, this.trainNumber, [this.departureTime = '09:00']);
+
   void info(){
-    print('$trainNumber $destination $departureTime');
+    print('Поезд номер $trainNumber прибывает в пунк назначения $destination в $departureTime');
   }
 }
